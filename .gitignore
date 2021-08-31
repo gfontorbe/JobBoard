@@ -141,3 +141,4 @@ sketch
 *.rdb
 
 # End of https://www.toptal.com/developers/gitignore/api/react,redis,node
+.vscode/launch.json
