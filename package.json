@@ -1,23 +1,27 @@
 {
-  "name": "JobBoard",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gfontorbe/JobBoard.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/gfontorbe/JobBoard/issues"
-  },
-  "homepage": "https://github.com/gfontorbe/JobBoard#readme",
-  "dependencies": {
-    "cron": "^1.8.2"
-  }
+    "name": "JobBoard",
+    "version": "1.0.0",
+    "description": "",
+    "type": "module",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gfontorbe/JobBoard.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/gfontorbe/JobBoard/issues"
+    },
+    "homepage": "https://github.com/gfontorbe/JobBoard#readme",
+    "dependencies": {
+        "cron": "^1.8.2",
+        "node-fetch": "^3.0.0",
+        "puppeteer": "^10.2.0",
+        "redis": "^4.0.0-rc.0"
+    }
 }
