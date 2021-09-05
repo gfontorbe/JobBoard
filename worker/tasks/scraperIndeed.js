@@ -95,8 +95,7 @@ export default async function scrapeIndeed(url) {
 
   await browser.close();
 
-  //needs to be a string to be passed as a value in Redis
-  return JSON.stringify(jobs);
+  return jobs;
 }
 
 //scrapeIndeed("https://de.indeed.com/Jobs?q=web+developer");
