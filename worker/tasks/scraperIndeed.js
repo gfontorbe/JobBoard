@@ -1,7 +1,7 @@
 import { job } from "cron";
 import puppeteer from "puppeteer";
 
-//TODO: refactor scraper to run all variables in a single
+//TODO: refactor scraper to run all variables in a single go
 
 export default async function scrapeIndeed(url) {
   console.log("launching puppeteer...");
