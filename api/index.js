@@ -1,10 +1,17 @@
 import express from "express";
+import { createClient } from "redis";
 
 //const express = require("express");
 const app = express();
 const port = 3001;
 
-app.get("/", (req, res) => {
+const client = await createClient();
+client.on("error", (err) => console.log("Redis Client Error", err));
+await client.connect();
+
+app.get("/jobs", async (req, res) => {
+  const jobs = await client.get("indeedJobs");
+  console.log(JSON.parse(jobs));
   res.send("Hello World!");
 });
 
