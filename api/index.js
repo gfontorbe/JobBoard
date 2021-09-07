@@ -12,7 +12,9 @@ await client.connect();
 app.get("/jobs", async (req, res) => {
   const jobs = await client.get("indeedJobs");
   console.log(JSON.parse(jobs));
-  res.send("Hello World!");
+
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.send(jobs);
 });
 
 app.listen(port, () => {
