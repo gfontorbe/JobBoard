@@ -1,4 +1,4 @@
-import { Typography } from "@material-ui/core";
+import {Typography} from "@mui/material"
 import React from "react";
 import "./App.css";
 
@@ -36,7 +36,11 @@ function App() {
       <Typography variant="h1">
         Entry- and Mid-level Web Developer Jobs in Germany
       </Typography>
-      <Jobs jobs={jobList} />
+
+        {/* <Jobs jobs={jobList} /> */}
+
+        <Jobs jobs={jobList}/>
+      
     </div>
   );
 }

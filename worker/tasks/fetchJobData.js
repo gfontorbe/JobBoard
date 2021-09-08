@@ -3,9 +3,6 @@ import { createClient } from "redis";
 
 const baseURL = "https://de.indeed.com/Jobs?q=web+developer";
 
-//let startPage = 0;
-let allPages = [];
-
 export async function fetchJobsData() {
   const startTime = Date.now();
   const client = await createClient();
@@ -43,5 +40,3 @@ export async function fetchJobsData() {
 
   console.log(`Process done in ${endTime - startTime}ms.`);
 }
-
-//fetchJobsData();
