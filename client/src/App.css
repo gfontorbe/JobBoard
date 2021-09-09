@@ -17,4 +17,5 @@ body {
 
 .job:hover {
     cursor: pointer;
+    color: #888;
 }
