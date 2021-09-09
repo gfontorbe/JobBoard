@@ -14,3 +14,7 @@ body {
     padding: 10px 10px;
     align-items: center;
 }
+
+.job:hover {
+    cursor: pointer;
+}

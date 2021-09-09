@@ -12,6 +12,9 @@ export default function Jobs({jobs}) {
   const [activeStep, setActiveStep] = React.useState(0);
   const maxSteps = Math.ceil(jobs.length/10);
 
+  const jobsOnPage = jobs.slice(activeStep * 10, activeStep * 10 + 10);
+
+
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
@@ -25,7 +28,7 @@ export default function Jobs({jobs}) {
         <Typography variant="h5" component="h2" className='text-center'>Found {jobs.length} jobs</Typography>
 
         {
-            jobs.map(job=><Job job={job} key={job.id}/>)
+            jobsOnPage.map(job=><Job job={job} key={job.id}/>)
         }
         
       <MobileStepper
