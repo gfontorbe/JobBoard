@@ -10,7 +10,7 @@ export default function Job({ job, onClick }) {
         <Typography>{job.location}</Typography>
       </div>
       <div>
-        <Typography>Fetched at</Typography>
+        <Typography>{Date(job.fetchedOn).split(' ').slice(1,4).join(' ')}</Typography>
       </div>
     </Paper>
   );
