@@ -88,7 +88,7 @@ export default async function scrapeIndeed(url) {
       company: companies[index],
       location: locations[index],
       link: links[index],
-      fetchedOn : Date.now();
+      fetchedOn : Date.now()
     };
 
     jobs.push(job);
