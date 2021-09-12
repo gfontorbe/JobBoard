@@ -1,21 +1,20 @@
-import React from 'react';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import Slide from '@material-ui/core/Slide';
-import { Button, Typography } from '@material-ui/core';
+import React from "react";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import Slide from "@material-ui/core/Slide";
+import { Button, Typography } from "@material-ui/core";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
-    return <Slide direction="up" ref={ref} {...props} />;
-  });
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
-export default function JobModal({job, open, handleClose}){
-    
-    if(!job.title){
-        return(<div />);
-    }
+export default function JobModal({ job, open, handleClose }) {
+  if (!job.title) {
+    return <div />;
+  }
 
   return (
     <div>
@@ -30,18 +29,23 @@ export default function JobModal({job, open, handleClose}){
         <DialogTitle id="alert-dialog-slide-title">{job.title}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
-            <Typography variant="h6" component="h3">{job.company}</Typography>
-            <Typography variant="h6" component="h3">{job.location}</Typography>
-            <Typography variant="h6" component="h3">{Date(job.fetchedOn).split(' ').slice(1,4).join(' ')}</Typography>
-            <div dangerouslySetInnerHTML={{__html: job.description}}>
-            </div>
+            <Typography variant="h6" component="span">
+              {job.company}
+              <br></br>
+            </Typography>
+            <Typography variant="h6" component="span">
+              {job.location}
+              <br></br>
+            </Typography>
+            <Typography variant="h6" component="span">
+              {Date(job.fetchedOn).split(" ").slice(1, 4).join(" ")}
+            </Typography>
           </DialogContentText>
+          <div dangerouslySetInnerHTML={{ __html: job.description }}></div>
         </DialogContent>
         <DialogActions>
           <a target="_blank" href={job.link}>
-          <Button color="primary">
-            Go to ad
-          </Button>
+            <Button color="primary">Go to ad</Button>
           </a>
           <Button onClick={handleClose} color="primary">
             Close
