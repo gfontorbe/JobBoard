@@ -77,6 +77,23 @@ export default async function scrapeIndeed(url) {
     return data;
   });
   console.log(`found ${locations.length} locations.`);
+
+  //scrape descriptions
+  console.log('scraping descriptions...');
+  let descriptions = await page.evaluate(()=>{
+    let data = [];
+
+    let elements = document.querySelectorAll(".job-snippet");
+    for(var element of elements){
+      console.log(element.innerHTML);
+      data.push(element.innerHTML);
+    }
+
+    return data;
+  });
+  console.log(`found ${descriptions.length} descriptions.`);
+
+
   console.log(`scraping complete.`)
   //turn scraped values into an array of objects
   const jobs = [];
@@ -88,6 +105,7 @@ export default async function scrapeIndeed(url) {
       company: companies[index],
       location: locations[index],
       link: links[index],
+      description: descriptions[index],
       fetchedOn : Date.now()
     };
 
