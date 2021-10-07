@@ -32,11 +32,12 @@ jobs:
     needs: build
     runs-on: self-hosted
     steps:
-    - uses: appleboy/ssh-action@v0.1.4
-      with:
-        host: ${{ secrets.$HOST }}
+    #- uses: appleboy/ssh-action@v0.1.4
+     # with:
+     #   host: ${{ secrets.HOST }}
     - name: SSH Remote Commands
       run: |
+          cd
           mkdir testDir
           cd testDir
           touch testFile.txt
