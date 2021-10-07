@@ -44,7 +44,7 @@ export default function JobModal({ job, open, handleClose }) {
           <div dangerouslySetInnerHTML={{ __html: job.description }}></div>
         </DialogContent>
         <DialogActions>
-          <a target="_blank" href={job.link}>
+          <a target="_blank" href={job.link} rel="noreferrer">
             <Button color="primary">Go to ad</Button>
           </a>
           <Button onClick={handleClose} color="primary">
