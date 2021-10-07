@@ -26,4 +26,78 @@ jobs:
     - run: npm i
       working-directory: client
     - run: npm run build --if-present
-      working-directory: client    
+      working-directory: client
+
+  deploy:
+    needs: build
+    runs-on: self-hosted
+    steps:
+    - uses: appleboy/ssh-action@v0.1.4
+      with:
+        host: ${{ secrets.$HOST }}
+    - name: SSH Remote Commands
+      run: |
+          mkdir testDir
+          cd testDir
+          touch testFile.txt
+          ls
+  # You may pin to the exact commit or the version.
+  # uses: appleboy/ssh-action@1d1b21ca96111b1eb4c03c21c14ebb971d2200f6
+  #uses: appleboy/ssh-action@v0.1.4
+ # with:
+    # ssh host
+     # optional
+    # ssh port
+    #port: # optional, default is 22
+    # ssh key passphrase
+    #passphrase: # optional
+    # ssh username
+    #username: # optional
+    # ssh password
+    #password: # optional
+    # synchronous execution if multiple hosts
+    #sync: # optional
+    # include more ciphers with use_insecure_cipher
+    #use_insecure_cipher: # optional
+    # the allowed cipher algorithms. If unspecified then a sensible
+    #cipher: # optional
+    # timeout for ssh to host
+    #timeout: # optional, default is 30s
+    # timeout for ssh command
+    #command_timeout: # optional, default is 10m
+    # content of ssh private key. ex raw content of ~/.ssh/id_rsa
+    #key: # optional
+    # path of ssh private key
+    #key_path: # optional
+    # sha256 fingerprint of the host public key
+    #fingerprint: # optional
+    # ssh proxy host
+    #proxy_host: # optional
+    # ssh proxy port
+    #proxy_port: # optional, default is 22
+    # ssh proxy username
+    #proxy_username: # optional
+    # ssh proxy password
+    #proxy_password: # optional
+    # ssh proxy key passphrase
+    #proxy_passphrase: # optional
+    # timeout for ssh to proxy host
+    #proxy_timeout: # optional, default is 30s
+    # content of ssh proxy private key. ex raw content of ~/.ssh/id_rsa
+    #proxy_key: # optional
+    # path of ssh proxy private key
+    #proxy_key_path: # optional
+    # sha256 fingerprint of the proxy host public key
+    #proxy_fingerprint: # optional
+    # the allowed cipher algorithms. If unspecified then a sensible
+    #proxy_cipher: # optional
+    # include more ciphers with use_insecure_cipher
+    #proxy_use_insecure_cipher: # optional
+    # execute commands
+    #script: # optional
+    # stop script after first failure
+    #script_stop: # optional
+    # pass environment variable to shell script
+    #envs: # optional
+    # enable debug mode
+    #debug: # optional
