@@ -5,7 +5,9 @@ import puppeteer from "puppeteer";
 
 export default async function scrapeIndeed(url) {
   console.log("launching puppeteer...");
-  const browser = await puppeteer.launch();
+  const browser =  await puppeteer.launch({
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+  });
 
   console.log("opening new page...");
   const page = await browser.newPage();
@@ -106,7 +108,7 @@ export default async function scrapeIndeed(url) {
       location: locations[index],
       link: links[index],
       description: descriptions[index],
-      fetchedOn : Date.now()
+      fetchedOn : Date.now().toString()
     };
 
     jobs.push(job);
@@ -116,7 +118,3 @@ export default async function scrapeIndeed(url) {
 
   return jobs;
 }
-
-//scrapeIndeed("https://de.indeed.com/Jobs?q=web+developer");
-
-//export {scrapeIndeed};

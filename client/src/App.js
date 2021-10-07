@@ -4,15 +4,7 @@ import "./App.css";
 
 import Jobs from "./Jobs";
 
-const mockJobs = [
-  { title: "SWE 1", company: "Google" },
-  {
-    title: "SWE 2",
-    company: "Microsoft",
-  },
-];
-
-const JOB_API_URL = "http://localhost:3001/jobs";
+const JOB_API_URL = "/JobBoardDemo/api/jobs";
 
 async function fetchJobs(updateCb) {
   const res = await fetch(JOB_API_URL);
@@ -20,8 +12,6 @@ async function fetchJobs(updateCb) {
   const jobs = await res.json();
 
   updateCb(jobs);
-
-  console.log(jobs);
 }
 
 function App() {
@@ -33,12 +23,11 @@ function App() {
 
   return (
     <div className="App">
-      <Typography variant="h4" component="h1" className={'text-center'}>
+      <Typography variant="h4" component="h1" className={"text-center"}>
         Entry- and Mid-level Web Developer Jobs in Germany
       </Typography>
-      
+
       <Jobs jobs={jobList} />
-      
     </div>
   );
 }

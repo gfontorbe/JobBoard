@@ -9,7 +9,7 @@ const client = await createClient();
 client.on("error", (err) => console.log("Redis Client Error", err));
 await client.connect();
 
-app.get("/jobs", async (req, res) => {
+app.get("/JobBoardDemo/api/jobs", async (req, res) => {
   const jobs = await client.get("indeedJobs");
   console.log(JSON.parse(jobs));
 
