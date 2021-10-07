@@ -30,5 +30,8 @@ jobs:
       working-directory: client
     - run: npm run build --if-present
       working-directory: client
+      
+    - name: Check Where the build folder is
+    - run: ls 
     #- run: npm test
     #  working-directory: client
