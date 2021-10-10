@@ -32,10 +32,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-    #- uses: appleboy/ssh-action@v0.1.4
-     # with:
-     #   host: ${{ secrets.HOST }}
-    - name: SSH Remote Commands
+    - name: Copy files to destination folder via SSH
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
@@ -43,5 +40,19 @@ jobs:
         key: ${{ secrets.KEY }}
         passphrase: ${{ secrets.PASSPHRASE }}
         script: |
-          whoami
-          ls -al
+          cp ${{ secrets.ORIGINPATH}}/api ${{ secrets.DESTINATIONPATH}}/api
+          cp ${{ secrets.ORIGINPATH}}/worker ${{ secrets.DESTINATIONPATH}}/worker
+          cp ${{ secrets.ORIGINPATH}}/client/build ${{ secrets.DESTINATIONPATH}}/build
+    - name: Restart PM2 services
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.KEY }}
+        passphrase: ${{ secrets.PASSPHRASE }}
+        script: |
+          pm2 restart JobBoardWorker
+          pm2 restart JobBoardAPI
+          pm2 restart JobBoardFE
+          
+          
