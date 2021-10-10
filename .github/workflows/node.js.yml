@@ -40,9 +40,9 @@ jobs:
         key: ${{ secrets.KEY }}
         passphrase: ${{ secrets.PASSPHRASE }}
         script: |
-          cp ${{ secrets.ORIGINPATH}}/api ${{ secrets.DESTINATIONPATH}}/api
-          cp ${{ secrets.ORIGINPATH}}/worker ${{ secrets.DESTINATIONPATH}}/worker
-          cp ${{ secrets.ORIGINPATH}}/client/build ${{ secrets.DESTINATIONPATH}}/build
+          cp -r ${{ secrets.ORIGINPATH}}/api ${{ secrets.DESTINATIONPATH}}/api
+          cp -r ${{ secrets.ORIGINPATH}}/worker ${{ secrets.DESTINATIONPATH}}/worker
+          cp -r ${{ secrets.ORIGINPATH}}/client/build ${{ secrets.DESTINATIONPATH}}/build
     - name: Restart PM2 services
       uses: appleboy/ssh-action@master
       with:
