@@ -21,12 +21,10 @@ export default function Jobs({jobs}) {
   const jobsOnPage = jobs.slice(activeStep * jobsPerPage, activeStep * jobsPerPage + jobsPerPage);
 
   const handleNext = () => {
-    console.log(`activeStep: ${activeStep}`);
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
   const handleBack = () => {
-    console.log(`activeStep: ${activeStep}`);
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 

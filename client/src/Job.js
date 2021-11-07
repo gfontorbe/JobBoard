@@ -3,6 +3,8 @@ import React from "react";
 
 export default function Job({ job, onClick }) {
 
+  console.log(`Date: ${job.fetchedOn}`);
+
   // change fetchedOn to format 'Day Month Day# Year hh:mm:ss GMT+hhmm (Central Europe Time)'
   let date = new Date(job.fetchedOn).toString();
 
