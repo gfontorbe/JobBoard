@@ -3,10 +3,9 @@ import React from "react";
 
 export default function Job({ job, onClick }) {
   // change fetchedOn to format 'Day Month Day# Year hh:mm:ss GMT+hhmm (Central Europe Time)'
-  console.log(`fetchedOn: ${job.fetchedOn}`);
-  console.log(typeof(job.fetchedOn));
+  // need to cast fetchedOn as number since it is sent as a string from the api
   let date = new Date(Number(job.fetchedOn)).toString();
-  console.log(`Date: ${date}`);
+  
   // display date in format 'Month Day# Year'
   let displayDate = date.split(' ').slice(1,4).join(' ');
 
