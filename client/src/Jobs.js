@@ -12,13 +12,21 @@ import { Typography } from '@material-ui/core';
 
 export default function Jobs({jobs}) {
   // pagination
+  const jobsPerPage = 10;
+
   const [activeStep, setActiveStep] = React.useState(0);
-  const maxSteps = Math.ceil(jobs.length/10);
-  const jobsOnPage = jobs.slice(activeStep * 10, activeStep * 10 + 10);
+
+  const maxSteps = Math.ceil(jobs.length/jobsPerPage);
+
+  const jobsOnPage = jobs.slice(activeStep * jobsPerPage, activeStep * jobsPerPage + jobsPerPage);
+
   const handleNext = () => {
+    console.log(`activeStep: ${activeStep}`);
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
+
   const handleBack = () => {
+    console.log(`activeStep: ${activeStep}`);
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
@@ -45,6 +53,7 @@ export default function Jobs({jobs}) {
         steps={maxSteps}
         position="static"
         variant="text"
+        activeStep={activeStep}
         nextButton={
           <Button size="small" onClick={handleNext} disabled={activeStep === maxSteps - 1}>
             Next
