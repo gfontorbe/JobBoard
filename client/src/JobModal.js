@@ -15,6 +15,8 @@ export default function JobModal({ job, open, handleClose }) {
   if (!job.title) {
     return <div />;
   }
+  let date = new Date(Number(job.fetchedOn)).toString();
+  let displayDate = date.split(' ').slice(1,4).join(' ');
 
   return (
     <div>
@@ -38,7 +40,7 @@ export default function JobModal({ job, open, handleClose }) {
               <br></br>
             </Typography>
             <Typography variant="h6" component="span">
-              {Date(job.fetchedOn).split(" ").slice(1, 4).join(" ")}
+              {displayDate}
             </Typography>
           </DialogContentText>
           <div dangerouslySetInnerHTML={{ __html: job.description }}></div>
