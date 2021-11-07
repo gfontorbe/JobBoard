@@ -2,12 +2,9 @@ import {Paper, Typography} from "@material-ui/core"
 import React from "react";
 
 export default function Job({ job, onClick }) {
-
-  console.log(`Date: ${job.fetchedOn}`);
-
   // change fetchedOn to format 'Day Month Day# Year hh:mm:ss GMT+hhmm (Central Europe Time)'
   let date = new Date(job.fetchedOn).toString();
-
+  console.log(`Date: ${date}`);
   // display date in format 'Month Day# Year'
   let displayDate = date.split(' ').slice(1,4).join(' ');
 
